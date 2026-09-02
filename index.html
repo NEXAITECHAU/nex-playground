@@ -292,7 +292,7 @@ async function runChat() {
     setOutput('chat-output', 'Error: ' + r.error, true);
     return;
   }
-  const reply = r.data?.reply || r.data?.message || JSON.stringify(r.data, null, 2);
+  const reply = r.data?.message?.content || r.data?.reply || r.data?.message || JSON.stringify(r.data, null, 2);
   setOutput('chat-output', reply);
   setMeta('chat-meta', `model: nemotron-3.5-lightning:30b | ${r.ms}ms | ${reply.length} chars`);
 }
@@ -310,7 +310,7 @@ async function runCode() {
     setOutput('code-output', 'Error: ' + r.error, true);
     return;
   }
-  const reply = r.data?.reply || r.data?.message || JSON.stringify(r.data, null, 2);
+  const reply = r.data?.message?.content || r.data?.reply || r.data?.message || JSON.stringify(r.data, null, 2);
   setOutput('code-output', reply);
   setMeta('code-meta', `model: qwen3-coder:30b | ${r.ms}ms | ${reply.length} chars`);
 }
